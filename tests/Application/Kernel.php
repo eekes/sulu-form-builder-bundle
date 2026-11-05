@@ -7,6 +7,7 @@ namespace Eekes\Sulu\FormBuilderBundle\Tests\Application;
 use Eekes\Sulu\FormBuilderBundle\EekesSuluFormBuilderBundle;
 use Sulu\Bundle\TestBundle\Kernel\SuluTestKernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\UX\TwigComponent\TwigComponentBundle;
 
 /**
@@ -28,6 +29,14 @@ class Kernel extends SuluTestKernel
         parent::registerContainerConfiguration($loader);
 
         $loader->load(__DIR__.'/config/config.yaml');
+
+        // symfony/var-exporter 8 no longer ships the LazyGhost proxies Doctrine ORM 3 falls back
+        // on, and it is what a PHP 8.4 install resolves to, so proxies use native lazy objects there.
+        if (\PHP_VERSION_ID >= 80400) {
+            $loader->load(static function (ContainerBuilder $container): void {
+                $container->loadFromExtension('doctrine', ['orm' => ['enable_native_lazy_objects' => true]]);
+            });
+        }
     }
 
     public function getProjectDir(): string

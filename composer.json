@@ -58,6 +58,9 @@
         "symfony/phpunit-bridge": "^7.4",
         "symfony/ux-twig-component": "^2.20"
     },
+    "conflict": {
+        "friendsofsymfony/http-cache-bundle": "<3.0.1"
+    },
     "suggest": {
         "symfony/ux-twig-component": "To render a form with <twig:EekesFormBuilder:Form key=\"contact\"/>",
         "symfony/messenger": "To run integration flows in a worker instead of during the visitor's request",
