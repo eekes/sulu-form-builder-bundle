@@ -1,0 +1,11 @@
+# Keep what only matters while developing the bundle out of the package a project installs:
+# composer ships the git archive, so without this every consumer carries the test suite and the
+# tooling configuration around in vendor/.
+/.editorconfig export-ignore
+/.gitattributes export-ignore
+/.github export-ignore
+/.gitignore export-ignore
+/.php-cs-fixer.php export-ignore
+/phpstan.dist.neon export-ignore
+/phpunit.dist.xml export-ignore
+/tests export-ignore

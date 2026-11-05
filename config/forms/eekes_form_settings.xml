@@ -1,0 +1,121 @@
+<?xml version="1.0" ?>
+<form xmlns="http://schemas.sulu.io/template/template"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/form-1.0.xsd"
+>
+    <key>eekes_form_settings</key>
+
+    <properties>
+        <section name="general">
+            <meta>
+                <title>eekes_form_builder.general</title>
+            </meta>
+            <properties>
+                <property name="title" type="text_line" mandatory="true" colspan="8">
+                    <meta>
+                        <title>sulu_admin.title</title>
+                        <info_text>eekes_form_builder.title_info</info_text>
+                    </meta>
+                </property>
+                <property name="key" type="text_line" colspan="4">
+                    <meta>
+                        <title>eekes_form_builder.form_key</title>
+                        <info_text>eekes_form_builder.form_key_info</info_text>
+                    </meta>
+                </property>
+            </properties>
+        </section>
+
+        <section name="after_submit">
+            <meta>
+                <title>eekes_form_builder.after_submit</title>
+            </meta>
+            <properties>
+                <property name="afterSubmit" type="single_select" colspan="12">
+                    <meta>
+                        <title>eekes_form_builder.after_submit_action</title>
+                    </meta>
+                    <params>
+                        <param name="default_value" value="message"/>
+                        <param name="values" type="collection">
+                            <param name="message">
+                                <meta>
+                                    <title>eekes_form_builder.after_submit_message</title>
+                                </meta>
+                            </param>
+                            <param name="redirect">
+                                <meta>
+                                    <title>eekes_form_builder.after_submit_redirect</title>
+                                </meta>
+                            </param>
+                        </param>
+                    </params>
+                </property>
+                <property name="successMessage" type="text_editor" colspan="12" visibleCondition="afterSubmit != 'redirect'">
+                    <meta>
+                        <title>eekes_form_builder.success_message</title>
+                        <info_text>eekes_form_builder.success_message_info</info_text>
+                    </meta>
+                </property>
+                <property name="redirectPage" type="single_page_selection" colspan="6" visibleCondition="afterSubmit == 'redirect'">
+                    <meta>
+                        <title>eekes_form_builder.redirect_page</title>
+                    </meta>
+                </property>
+                <property name="redirectUrl" type="url" colspan="6" visibleCondition="afterSubmit == 'redirect'">
+                    <meta>
+                        <title>eekes_form_builder.redirect_url</title>
+                        <info_text>eekes_form_builder.redirect_url_info</info_text>
+                    </meta>
+                </property>
+            </properties>
+        </section>
+
+        <section name="buttons">
+            <meta>
+                <title>eekes_form_builder.buttons</title>
+                <info_text>eekes_form_builder.buttons_info</info_text>
+            </meta>
+            <properties>
+                <property name="submitLabel" type="text_line" colspan="4">
+                    <meta>
+                        <title>eekes_form_builder.submit_label</title>
+                    </meta>
+                </property>
+                <property name="nextLabel" type="text_line" colspan="4">
+                    <meta>
+                        <title>eekes_form_builder.next_label</title>
+                    </meta>
+                </property>
+                <property name="previousLabel" type="text_line" colspan="4">
+                    <meta>
+                        <title>eekes_form_builder.previous_label</title>
+                    </meta>
+                </property>
+            </properties>
+        </section>
+
+        <section name="storage">
+            <meta>
+                <title>eekes_form_builder.storage</title>
+            </meta>
+            <properties>
+                <property name="storeSubmissions" type="checkbox" colspan="12">
+                    <meta>
+                        <title>eekes_form_builder.store_submissions</title>
+                        <info_text>eekes_form_builder.store_submissions_info</info_text>
+                    </meta>
+                    <params>
+                        <param name="type" value="toggler"/>
+                        <param name="default_value" value="true"/>
+                        <param name="label">
+                            <meta>
+                                <title>eekes_form_builder.store_submissions_label</title>
+                            </meta>
+                        </param>
+                    </params>
+                </property>
+            </properties>
+        </section>
+    </properties>
+</form>

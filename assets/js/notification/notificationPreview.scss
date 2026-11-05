@@ -1,0 +1,122 @@
+/* Colors copied from the palette of sulu-admin-bundle, which cannot be imported from outside of that package. */
+$border: #e5e5e5;
+$textMuted: #6e6e6e;
+
+.preview {
+    border: 1px solid $border;
+    border-radius: 3px;
+    background: #fff;
+}
+
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    border-bottom: 1px solid $border;
+    font-size: 12px;
+}
+
+.meta {
+    flex: 1;
+    min-width: 0;
+
+    span {
+        color: $textMuted;
+    }
+
+    div {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+}
+
+.switch {
+    display: flex;
+    border: 1px solid $border;
+    border-radius: 3px;
+    overflow: hidden;
+
+    button {
+        padding: 4px 10px;
+        border: 0;
+        background: #fff;
+        color: $textMuted;
+        font-size: 11px;
+        cursor: pointer;
+    }
+
+    .active {
+        background: #f2f2f2;
+        color: #333;
+        font-weight: bold;
+    }
+}
+
+.frame {
+    display: flex;
+    justify-content: center;
+    min-height: 200px;
+    padding: 16px;
+    background: #f3f4f6;
+}
+
+.iframe {
+    width: 100%;
+    max-width: 680px;
+    height: 640px;
+    border: 0;
+    background: #fff;
+    transition: max-width 150ms ease;
+}
+
+.mobile {
+    max-width: 375px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .iframe {
+        transition: none;
+    }
+}
+
+.test {
+    padding: 12px 14px;
+    border-top: 1px solid $border;
+}
+
+.test-label {
+    display: block;
+    margin-bottom: 6px;
+    color: $textMuted;
+    font-size: 12px;
+}
+
+.test-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.test-input {
+    flex: 1;
+    max-width: 360px;
+}
+
+.problem {
+    margin: 8px 14px 0;
+    color: #cf3939;
+    font-size: 12px;
+}
+
+.test .problem {
+    margin: 8px 0 0;
+}
+
+.success {
+    margin: 8px 0 0;
+    color: #1e7b3a;
+    font-size: 12px;
+}

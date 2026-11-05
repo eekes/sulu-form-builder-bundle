@@ -1,0 +1,74 @@
+{#
+    The frame every notification template extends: an e-mail that holds up in Outlook, Gmail and
+    Apple Mail - tables for the layout, styles inline, a light and a dark scheme, and the first
+    line of the text as the preview line of the inbox.
+
+    Variables (also for templates of your own, see docs/notifications.md):
+    - body            the text of the notification, placeholders replaced, safe HTML
+    - values          the answers that were filled in (SubmittedValue: label, display, type, files)
+    - include_values  whether the notification shows the answers
+    - submission      the Submission (url, locale, createdAt, ...)
+    - definition      the FormDefinition (title, key, locale)
+    - notification    the Notification, or null in a preview of one that is not saved yet
+    - branding        name, logo_url, accent_color, footer, from the bundle configuration
+    - preheader       the first words of the text, for the preview line of the inbox
+    - admin_url       the submissions of the form in the admin, or null
+#}
+{%- set accent = branding.accent_color|default('#2563eb') -%}
+{%- set brand = branding.name|default(definition.title) -%}
+<!DOCTYPE html>
+<html lang="{{ definition.locale }}" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <meta name="supported-color-schemes" content="light dark">
+    <title>{{ brand }}</title>
+    <style>
+        @media (max-width: 620px) {
+            .eekes-container { width: 100% !important; }
+            .eekes-padding { padding-left: 24px !important; padding-right: 24px !important; }
+            .eekes-stack { display: block !important; width: 100% !important; box-sizing: border-box; }
+            td.eekes-label.eekes-stack { padding-bottom: 0 !important; }
+            td.eekes-value.eekes-stack { border-top: 0 !important; padding-top: 2px !important; }
+        }
+        @media (prefers-color-scheme: dark) {
+            .eekes-page { background: #111418 !important; }
+            .eekes-card { background: #1b1f24 !important; border-color: #2c323a !important; }
+            .eekes-text, .eekes-value, .eekes-title { color: #e6e8eb !important; }
+            .eekes-muted, .eekes-label, .eekes-footer { color: #9aa3ad !important; }
+            .eekes-rule { border-color: #2c323a !important; }
+            .eekes-panel { background: #22272e !important; border-color: #2c323a !important; }
+        }
+        .eekes-text p { margin: 0 0 14px; }
+        .eekes-text a { color: {{ accent }}; }
+    </style>
+</head>
+<body class="eekes-page" style="margin: 0; padding: 0; background: #f3f4f6; -webkit-text-size-adjust: 100%;">
+    {%- if preheader is not empty -%}
+        <div style="display: none; max-height: 0; overflow: hidden; opacity: 0; mso-hide: all;">{{ preheader }}&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;</div>
+    {%- endif -%}
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="eekes-page" style="background: #f3f4f6;">
+        <tr>
+            <td align="center" style="padding: 32px 12px;">
+                <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" class="eekes-container" style="width: 600px; max-width: 600px;">
+                    {% block content %}{% endblock %}
+                    <tr>
+                        <td class="eekes-footer eekes-padding" style="padding: 20px 40px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 12px; line-height: 1.6; color: #6b7280; text-align: center;">
+                            {% block footer %}
+                                {%- if branding.footer is not empty -%}
+                                    {{ branding.footer|nl2br }}<br>
+                                {%- endif -%}
+                                {{ 'eekes_form_builder.email.sent_via'|trans({'%form%': definition.title, '%date%': submission.createdAt|date('d-m-Y H:i')}, 'eekes_form_builder') }}
+                                {%- if submission.url is not empty %}
+                                    · <a href="{{ submission.url }}" style="color: #6b7280; text-decoration: underline;">{{ submission.url|split('?')|first|replace({'https://': '', 'http://': ''})|trim('/') }}</a>
+                                {%- endif -%}
+                            {% endblock %}
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

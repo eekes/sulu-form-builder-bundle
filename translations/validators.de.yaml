@@ -1,0 +1,2 @@
+eekes_form_builder.repeater.too_few: 'Füllen Sie mindestens einen Eintrag aus.|Füllen Sie mindestens {{ limit }} Einträge aus.'
+eekes_form_builder.repeater.too_many: 'Füllen Sie höchstens einen Eintrag aus.|Füllen Sie höchstens {{ limit }} Einträge aus.'

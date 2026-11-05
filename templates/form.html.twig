@@ -1,0 +1,32 @@
+{#
+    The wrapper around a form. Override it in templates/bundles/EekesSuluFormBuilderBundle/form.html.twig,
+    or point eekes_sulu_form_builder.rendering.template at a template of your own.
+
+    Available: definition (FormDefinition), form (FormView of the flow), form_theme, anchor, include_script,
+    script_version (changes with the script, so browsers never run a cached older one), turbo_frame (wrap in a <turbo-frame>), break_out_of_frame (the form redirects to another page).
+#}
+{% form_theme form form_theme %}
+
+{% set wrapper = turbo_frame ? 'turbo-frame' : 'div' %}
+<{{ wrapper }} class="eekes-form-wrapper" id="{{ anchor }}" data-eekes-form="{{ definition.key }}">
+    {% if form.vars.visible_steps|default([])|length > 1 %}
+        <ol class="eekes-form-progress list-unstyled d-flex gap-3 mb-4">
+            {% for step in form.vars.visible_steps %}
+                {% set step_definition = definition.step(step.name) %}
+                <li class="eekes-form-progress-step{{ step.is_current_step ? ' is-current fw-bold' : '' }}"{{ step.is_current_step ? ' aria-current="step"' : '' }}>
+                    <span class="eekes-form-progress-number">{{ step.position }}</span>
+                    {{ step_definition ? step_definition.title : '' }}
+                </li>
+            {% endfor %}
+        </ol>
+    {% endif %}
+
+    {{ form_start(form, {action: '#' ~ anchor, attr: {'data-eekes-values': form.vars.eekes_values|json_encode}|merge(break_out_of_frame ? {'data-turbo-frame': '_top'} : {})}) }}
+        {{ form_errors(form) }}
+        {{ form_rest(form) }}
+    {{ form_end(form) }}
+</{{ wrapper }}>
+
+{% if include_script %}
+    <script src="{{ asset('bundles/eekessuluformbuilder/js/form-builder.js') }}?v={{ script_version }}" defer></script>
+{% endif %}

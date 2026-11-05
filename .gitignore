@@ -1,0 +1,11 @@
+/.idea/
+/.php-cs-fixer.cache
+/.phpunit.cache/
+/composer.lock
+/vendor/
+/assets/js/node_modules/
+var/
+
+# Claude Code instructions live in the workspace, not in this repository.
+/CLAUDE.md
+/.claude/

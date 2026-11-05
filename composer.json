@@ -1,0 +1,106 @@
+{
+    "name": "eekes/sulu-form-builder-bundle",
+    "type": "symfony-bundle",
+    "description": "A form builder for Sulu 3: multi-step forms on Symfony's FormFlow, a visual 12-column builder, per-form notifications and a readable submission inbox",
+    "keywords": [
+        "sulu",
+        "sulu-bundle",
+        "symfony",
+        "forms",
+        "form-builder",
+        "form-flow",
+        "multi-step"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ewald Vanderveken",
+            "email": "vandervekenewald@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.3",
+        "doctrine/dbal": "^3.8 || ^4.0",
+        "doctrine/doctrine-bundle": "^2.13",
+        "doctrine/orm": "^2.17 || ^3.3",
+        "sulu/sulu": "~3.0",
+        "symfony/config": "^7.4",
+        "symfony/dependency-injection": "^7.4",
+        "symfony/event-dispatcher": "^7.4",
+        "symfony/form": "^7.4",
+        "symfony/framework-bundle": "^7.4",
+        "symfony/http-client": "^7.4",
+        "symfony/http-foundation": "^7.4",
+        "symfony/http-kernel": "^7.4",
+        "symfony/intl": "^7.4",
+        "symfony/mailer": "^7.4",
+        "symfony/mime": "^7.4",
+        "symfony/routing": "^7.4",
+        "symfony/string": "^7.4",
+        "symfony/translation-contracts": "^3.5",
+        "symfony/twig-bridge": "^7.4",
+        "symfony/validator": "^7.4",
+        "twig/twig": "^3.10"
+    },
+    "require-dev": {
+        "php-cs-fixer/shim": "^3.58",
+        "phpstan/extension-installer": "^1.4",
+        "phpstan/phpstan": "^2.1",
+        "phpstan/phpstan-doctrine": "^2.0",
+        "phpstan/phpstan-phpunit": "^2.0",
+        "phpstan/phpstan-symfony": "^2.0",
+        "phpunit/phpunit": "^11.5",
+        "symfony/browser-kit": "^7.4",
+        "symfony/css-selector": "^7.4",
+        "symfony/dotenv": "^7.4",
+        "symfony/messenger": "^7.4",
+        "symfony/monolog-bundle": "^3.10 || ^4.0",
+        "symfony/phpunit-bridge": "^7.4",
+        "symfony/ux-twig-component": "^2.20"
+    },
+    "suggest": {
+        "symfony/ux-twig-component": "To render a form with <twig:EekesFormBuilder:Form key=\"contact\"/>",
+        "symfony/messenger": "To run integration flows in a worker instead of during the visitor's request",
+        "eekes/sulu-form-builder-recaptcha": "Invisible reCAPTCHA v3 as a spam check editors switch on per form",
+        "eekes/sulu-form-builder-mailchimp": "To subscribe submissions to a Mailchimp audience",
+        "eekes/sulu-form-builder-teamleader": "To create leads and tickets in Teamleader Focus"
+    },
+    "autoload": {
+        "psr-4": {
+            "Eekes\\Sulu\\FormBuilderBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Eekes\\Sulu\\FormBuilderBundle\\Tests\\": "tests/"
+        },
+        "exclude-from-classmap": [
+            "tests/Application/var/"
+        ]
+    },
+    "scripts": {
+        "cs": "php-cs-fixer fix --dry-run --diff",
+        "cs-fix": "php-cs-fixer fix",
+        "phpstan": "phpstan analyse --memory-limit=1G",
+        "test": "phpunit"
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true,
+            "phpstan/extension-installer": true,
+            "symfony/runtime": true
+        },
+        "sort-packages": true
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-main": "0.1-dev"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "support": {
+        "issues": "https://github.com/eekes/sulu-form-builder-bundle/issues",
+        "source": "https://github.com/eekes/sulu-form-builder-bundle"
+    }
+}

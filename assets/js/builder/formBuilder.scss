@@ -1,0 +1,518 @@
+/* Colors copied from the palette of sulu-admin-bundle, which cannot be imported from outside of that package. */
+$primary: #52b6ca;
+$primaryLight: #e5f4f7;
+$dark: #112a46;
+$border: #ccc;
+$borderLight: #e5e5e5;
+$background: #fff;
+$backgroundMuted: #f5f5f5;
+$text: #333;
+$textMuted: #6e6e6e;
+$warning: #cf3939;
+$radius: 3px;
+
+.builder {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 220px;
+    gap: 20px;
+    align-items: start;
+}
+
+.main {
+    min-width: 0;
+}
+
+/* Steps */
+
+.steps {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 15px;
+}
+
+.step-tab,
+.add-step {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 32px;
+    padding: 0 12px;
+    border: 1px solid $border;
+    border-radius: $radius;
+    background: $background;
+    color: $text;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.step-tab:hover,
+.add-step:hover {
+    border-color: $primary;
+}
+
+.active-step {
+    border-color: $dark;
+    background: $dark;
+    color: #fff;
+}
+
+.drop-on-step {
+    border-color: $primary;
+    background: $primaryLight;
+}
+
+.add-step {
+    border-style: dashed;
+    color: $textMuted;
+}
+
+.step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, .08);
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.active-step .step-number {
+    background: rgba(255, 255, 255, .2);
+}
+
+.step-count {
+    color: inherit;
+    opacity: .6;
+}
+
+.step-conditional {
+    font-size: 11px;
+}
+
+.step-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.step-title {
+    flex: 1;
+}
+
+.step-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Breakpoint preview */
+
+.breakpoints {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 10px;
+    color: $textMuted;
+    font-size: 12px;
+}
+
+.breakpoint {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    border: 1px solid transparent;
+    border-radius: $radius;
+    background: none;
+    color: $textMuted;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.active-breakpoint {
+    border-color: $border;
+    background: $background;
+    color: $text;
+}
+
+/* The grid looks like the website: twelve columns, and a field that no longer fits wraps. */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 10px;
+    min-height: 120px;
+    margin: 0 auto;
+    padding: 15px;
+    border: 1px solid $borderLight;
+    border-radius: $radius;
+    background: repeating-linear-gradient(
+        90deg,
+        $backgroundMuted 0,
+        $backgroundMuted calc((100% - 110px) / 12),
+        transparent calc((100% - 110px) / 12),
+        transparent calc((100% - 110px) / 12 + 10px)
+    );
+    background-clip: content-box;
+    transition: max-width .2s;
+}
+
+.tablet {
+    max-width: 768px;
+}
+
+.mobile {
+    max-width: 390px;
+}
+
+.dropping {
+    border-color: $primary;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+    padding: 10px 14px 10px 12px;
+    border: 1px solid $border;
+    border-radius: $radius;
+    background: $background;
+    cursor: grab;
+    transition: border-color .15s, box-shadow .15s;
+
+    &:hover,
+    &:focus {
+        border-color: $primary;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, .08);
+        outline: none;
+    }
+
+    &:hover .card-actions,
+    &:focus-within .card-actions {
+        opacity: 1;
+    }
+}
+
+.content-card {
+    background: $backgroundMuted;
+}
+
+.missing-type {
+    border-color: $warning;
+}
+
+.dragging {
+    opacity: .4;
+}
+
+/* Where a dragged field will land. */
+.drop-before::before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -7px;
+    width: 3px;
+    border-radius: 2px;
+    background: $primary;
+    content: '';
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    color: $textMuted;
+    font-size: 11px;
+}
+
+.card-type {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.card-width {
+    font-variant-numeric: tabular-nums;
+}
+
+.card-label {
+    overflow: hidden;
+    color: $text;
+    font-size: 13px;
+    font-weight: bold;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.required {
+    margin-left: 3px;
+    color: $warning;
+}
+
+.card-warning {
+    color: $warning;
+    font-size: 11px;
+}
+
+.card-footer {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: $textMuted;
+    font-size: 11px;
+}
+
+.card-key {
+    overflow: hidden;
+    font-family: monospace;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.badge {
+    display: inline-flex;
+    color: $primary;
+}
+
+.card-actions {
+    position: absolute;
+    right: 14px;
+    bottom: 6px;
+    display: flex;
+    gap: 2px;
+    opacity: 0;
+    transition: opacity .15s;
+
+    button {
+        padding: 4px;
+        border: 0;
+        background: $background;
+        color: $textMuted;
+        cursor: pointer;
+
+        &:hover {
+            color: $dark;
+        }
+    }
+}
+
+.resize-handle {
+    position: absolute;
+    top: 0;
+    right: -4px;
+    bottom: 0;
+    width: 10px;
+    cursor: col-resize;
+
+    &::after {
+        position: absolute;
+        top: 50%;
+        left: 3px;
+        width: 4px;
+        height: 24px;
+        margin-top: -12px;
+        border-radius: 2px;
+        background: $border;
+        content: '';
+    }
+
+    &:hover::after {
+        background: $primary;
+    }
+}
+
+.empty-step {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80px;
+    border: 2px dashed $border;
+    border-radius: $radius;
+    color: $textMuted;
+    font-size: 13px;
+}
+
+.drop-here {
+    border-color: $primary;
+    background: $primaryLight;
+}
+
+/* Palette */
+
+.palette {
+    position: sticky;
+    top: 10px;
+    padding: 12px;
+    border: 1px solid $borderLight;
+    border-radius: $radius;
+    background: $background;
+}
+
+.palette-title {
+    margin: 0 0 10px;
+    font-size: 14px;
+}
+
+.palette-group {
+    margin-bottom: 12px;
+
+    h4 {
+        margin: 0 0 6px;
+        color: $textMuted;
+        font-size: 11px;
+        font-weight: normal;
+        text-transform: uppercase;
+        letter-spacing: .05em;
+    }
+}
+
+.palette-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    margin-bottom: 4px;
+    padding: 7px 8px;
+    border: 1px solid $borderLight;
+    border-radius: $radius;
+    background: $background;
+    color: $text;
+    font-size: 12px;
+    text-align: left;
+    cursor: grab;
+
+    &:hover {
+        border-color: $primary;
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+        opacity: .5;
+    }
+}
+
+.palette-label {
+    flex: 1;
+    overflow: hidden;
+    text-align: left;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.palette-add {
+    color: $textMuted;
+    font-size: 10px;
+}
+
+/* Modals */
+
+.overlay-content {
+    padding: 20px 40px 40px;
+}
+
+.overlay-section {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid $borderLight;
+
+    h3 {
+        margin: 0 0 6px;
+        font-size: 14px;
+    }
+}
+
+.info {
+    margin: 0 0 12px;
+    color: $textMuted;
+    font-size: 12px;
+}
+
+.widths {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.width-select {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 12px;
+}
+
+.condition-row {
+    display: grid;
+    grid-template-columns: 2fr 1.3fr 1.5fr;
+    gap: 10px;
+}
+
+@media (max-width: 1100px) {
+    .builder {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .palette {
+        position: static;
+    }
+}
+
+/* Condition sets */
+
+.always {
+    margin: 0 0 8px;
+    color: $textMuted;
+    font-size: 12px;
+    font-style: italic;
+}
+
+.condition-match {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-size: 12px;
+
+    > div {
+        width: 120px;
+    }
+}
+
+.condition-group {
+    margin: 0 0 10px;
+    padding: 10px 12px;
+    border-left: 3px solid $primary;
+    background: $backgroundMuted;
+}
+
+.condition-row {
+    grid-template-columns: 2fr 1.3fr 1.5fr auto;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.remove-rule {
+    padding: 4px;
+    border: 0;
+    background: none;
+    color: $textMuted;
+    cursor: pointer;
+
+    &:hover {
+        color: $warning;
+    }
+}
+
+.condition-actions {
+    display: flex;
+    gap: 15px;
+}

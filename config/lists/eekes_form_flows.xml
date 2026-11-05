@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<!--
+    Only the columns: the rows come from FlowController, which lists the flows of one form
+    without Sulu's Doctrine list builder.
+-->
+<list xmlns="http://schemas.sulu.io/list-builder/list">
+    <key>eekes_form_flows</key>
+
+    <properties>
+        <property name="id" visibility="no" translation="sulu_admin.id">
+            <field-name>id</field-name>
+            <entity-name>Eekes\Sulu\FormBuilderBundle\Domain\Entity\Flow</entity-name>
+        </property>
+
+        <property name="name" visibility="always" translation="eekes_form_builder.flow_name">
+            <field-name>name</field-name>
+            <entity-name>Eekes\Sulu\FormBuilderBundle\Domain\Entity\Flow</entity-name>
+        </property>
+
+        <property name="integration" visibility="always" translation="eekes_form_builder.integration">
+            <field-name>integration</field-name>
+            <entity-name>Eekes\Sulu\FormBuilderBundle\Domain\Entity\Flow</entity-name>
+        </property>
+
+        <property name="enabled" visibility="always" type="bool" translation="eekes_form_builder.enabled">
+            <field-name>enabled</field-name>
+            <entity-name>Eekes\Sulu\FormBuilderBundle\Domain\Entity\Flow</entity-name>
+            <transformer type="bool"/>
+        </property>
+    </properties>
+</list>

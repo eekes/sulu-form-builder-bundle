@@ -1,0 +1,19 @@
+{#-
+    The answers in a light panel: the label on the left, the answer on the right, and on a phone
+    the label above the answer.
+-#}
+{%- set font = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" -%}
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="eekes-panel" style="background: #f9fafb; border: 1px solid #eef0f3; border-radius: 8px;">
+    <tr>
+        <td style="padding: 6px 20px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                {%- for value in values %}
+                    <tr>
+                        <td class="eekes-label eekes-rule eekes-stack" width="38%" valign="top" style="padding: 11px 16px 11px 0; {% if not loop.first %}border-top: 1px solid #eceef1; {% endif %}font-family: {{ font }}; font-size: 13px; line-height: 1.5; color: #6b7280;">{{ value.label }}</td>
+                        <td class="eekes-value eekes-rule eekes-stack" valign="top" style="padding: 11px 0; {% if not loop.first %}border-top: 1px solid #eceef1; {% endif %}font-family: {{ font }}; font-size: 14px; line-height: 1.5; color: #111827; word-break: break-word;">{{ value.display|nl2br }}</td>
+                    </tr>
+                {%- endfor %}
+            </table>
+        </td>
+    </tr>
+</table>

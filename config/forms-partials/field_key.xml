@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<properties xmlns="http://schemas.sulu.io/template/template">
+        <property name="key" type="text_line" colspan="12">
+            <meta>
+                <title>eekes_form_builder.field.key</title>
+                <info_text>eekes_form_builder.field.key_info</info_text>
+            </meta>
+        </property>
+</properties>

@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<properties xmlns="http://schemas.sulu.io/template/template">
+        <property name="showInList" type="checkbox" colspan="6">
+            <meta>
+                <title>eekes_form_builder.field.show_in_list</title>
+                <info_text>eekes_form_builder.field.show_in_list_info</info_text>
+            </meta>
+            <params>
+                <param name="type" value="toggler"/>
+                <param name="label" value="eekes_form_builder.field.show_in_list_label"/>
+            </params>
+        </property>
+</properties>

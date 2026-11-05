@@ -1,0 +1,2 @@
+eekes_form_builder.repeater.too_few: 'Vul minstens één item in.|Vul minstens {{ limit }} items in.'
+eekes_form_builder.repeater.too_many: 'Vul hoogstens één item in.|Vul hoogstens {{ limit }} items in.'

@@ -1,0 +1,6 @@
+{# A template of the application, configured under notifications.templates: it proves a project adds one with configuration alone. #}
+{% extends '@EekesSuluFormBuilder/email/base.html.twig' %}
+
+{% block content %}
+    <tr><td class="letter">Dear reader, {{ body|raw }}</td></tr>
+{% endblock %}

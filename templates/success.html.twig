@@ -1,0 +1,14 @@
+{#
+    Shown in place of the form after it was sent, when the form shows a message instead of redirecting.
+    Available: definition (FormDefinition), anchor, turbo_frame.
+#}
+{% set wrapper = turbo_frame|default(false) ? 'turbo-frame' : 'div' %}
+<{{ wrapper }} class="eekes-form-wrapper" id="{{ anchor|default('eekes_form_' ~ definition.key) }}" data-eekes-form="{{ definition.key }}">
+    <div class="eekes-form-success alert alert-success" role="status">
+        {% if definition.successMessage %}
+            {{ definition.successMessage|raw }}
+        {% else %}
+            <p class="mb-0">{{ 'eekes_form_builder.success'|trans({}, 'eekes_form_builder') }}</p>
+        {% endif %}
+    </div>
+</{{ wrapper }}>

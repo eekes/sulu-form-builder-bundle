@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+<list xmlns="http://schemas.sulu.io/list-builder/list">
+    <key>eekes_forms</key>
+
+    <properties>
+        <property name="id" visibility="no" translation="sulu_admin.id">
+            <field-name>id</field-name>
+            <entity-name>Eekes\Sulu\FormBuilderBundle\Domain\Entity\Form</entity-name>
+        </property>
+
+        <property name="title" visibility="always" searchability="yes" translation="sulu_admin.title">
+            <field-name>title</field-name>
+            <entity-name>Eekes\Sulu\FormBuilderBundle\Domain\Entity\Form</entity-name>
+        </property>
+
+        <property name="key" visibility="yes" searchability="yes" translation="eekes_form_builder.form_key">
+            <field-name>key</field-name>
+            <entity-name>Eekes\Sulu\FormBuilderBundle\Domain\Entity\Form</entity-name>
+        </property>
+
+        <property name="changedAt" visibility="yes" translation="sulu_admin.changed">
+            <field-name>changedAt</field-name>
+            <entity-name>Eekes\Sulu\FormBuilderBundle\Domain\Entity\Form</entity-name>
+            <transformer type="datetime"/>
+        </property>
+
+        <property name="createdAt" visibility="no" translation="sulu_admin.created">
+            <field-name>createdAt</field-name>
+            <entity-name>Eekes\Sulu\FormBuilderBundle\Domain\Entity\Form</entity-name>
+            <transformer type="datetime"/>
+        </property>
+    </properties>
+</list>

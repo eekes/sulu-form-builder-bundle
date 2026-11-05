@@ -1,0 +1,140 @@
+{#
+    Bootstrap 5 rendering of a built form: Symfony's own bootstrap_5_layout, plus the blocks for the
+    types this bundle adds. Each field row already carries its column classes (see
+    ColumnClassResolverInterface), so a step only has to be a .row.
+#}
+{% extends 'bootstrap_5_layout.html.twig' %}
+
+{%- block eekes_form_builder_widget -%}
+    {{- form_rest(form) -}}
+{%- endblock -%}
+
+{%- block eekes_form_builder_step_row -%}
+    {{- form_widget(form) -}}
+{%- endblock -%}
+
+{%- block eekes_form_builder_step_widget -%}
+    <fieldset class="eekes-form-step" data-eekes-step="{{ step.key }}">
+        {%- if step.title is not empty and form.parent.vars.visible_steps|default([])|length > 1 -%}
+            <legend class="eekes-form-step-title h4 mb-3">{{ step.title }}</legend>
+        {%- endif -%}
+        {{- form_errors(form) -}}
+        <div class="row">
+            {%- for child in form -%}
+                {{- form_row(child) -}}
+            {%- endfor -%}
+        </div>
+    </fieldset>
+{%- endblock -%}
+
+{%- block eekes_form_builder_static_content_row -%}
+    <div{% with {attr: row_attr} %}{{ block('attributes') }}{% endwith %}>
+        {{- html|raw -}}
+    </div>
+{%- endblock -%}
+
+{#
+    A rating: native radio buttons, drawn as stars or as a row of numbered buttons. The stars light
+    up to the chosen one with :has(), so no script is needed; the small inline style is the only
+    styling the bundle ships (override this block under a strict Content Security Policy).
+#}
+{%- block eekes_form_builder_rating_widget -%}
+    {%- set attr = attr|merge({class: (attr.class|default('') ~ ' eekes-form-rating eekes-form-rating-' ~ rating_display)|trim, role: 'radiogroup'}) -%}
+    {%- if rating_display == 'stars' -%}
+        <style>
+            .eekes-form-rating-stars .eekes-form-rating-options{display:inline-flex;gap:.125rem;font-size:1.75rem;line-height:1}
+            .eekes-form-rating-stars .eekes-form-rating-option{cursor:pointer;color:var(--bs-gray-400,#ced4da);padding:0 .125rem;margin:0}
+            .eekes-form-rating-stars .eekes-form-rating-options:has(.btn-check:checked) .eekes-form-rating-option,
+            .eekes-form-rating-stars .eekes-form-rating-options:hover .eekes-form-rating-option{color:var(--bs-warning,#ffc107)}
+            .eekes-form-rating-stars .btn-check:checked + .eekes-form-rating-option ~ .eekes-form-rating-option,
+            .eekes-form-rating-stars .eekes-form-rating-options .eekes-form-rating-option:hover ~ .eekes-form-rating-option{color:var(--bs-gray-400,#ced4da)}
+            .eekes-form-rating-stars .btn-check:focus-visible + .eekes-form-rating-option{outline:2px solid var(--bs-primary,#0d6efd);outline-offset:2px;border-radius:.25rem}
+        </style>
+    {%- endif -%}
+    <div {{ block('widget_container_attributes') }}>
+        <div class="eekes-form-rating-options{{ rating_display == 'scale' ? ' d-flex flex-wrap gap-1' }}">
+            {%- for child in form -%}
+                {%- if rating_display == 'stars' -%}
+                    {{- form_widget(child, {
+                        attr: {class: 'btn-check'},
+                        label: '<span aria-hidden="true">★</span><span class="visually-hidden">' ~ child.vars.label|e ~ '</span>',
+                        label_html: true,
+                        label_attr: {class: 'eekes-form-rating-option'},
+                    }) -}}
+                {%- else -%}
+                    {{- form_widget(child, {attr: {class: 'btn-check'}, label_attr: {class: 'btn btn-outline-primary eekes-form-rating-option'}}) -}}
+                {%- endif -%}
+            {%- endfor -%}
+        </div>
+        {%- if low_label is not null or high_label is not null -%}
+            <div class="eekes-form-rating-legend d-flex justify-content-between gap-3 small text-body-secondary mt-1">
+                <span>{{ low_label }}</span>
+                <span>{{ high_label }}</span>
+            </div>
+        {%- endif -%}
+    </div>
+{%- endblock -%}
+
+{#
+    A repeater: its rows, and a prototype the website script copies for "add". The add and remove
+    buttons stay hidden until the script shows them, so without it the visitor fills in the rows
+    the server rendered.
+#}
+{%- block eekes_form_builder_repeater_widget -%}
+    {%- set attr = attr|merge({class: (attr.class|default('') ~ ' eekes-form-repeater')|trim}) -%}
+    <div {{ block('widget_container_attributes') }} data-eekes-repeater="{{ name }}" data-eekes-repeater-min="{{ min }}"{% if max is not null %} data-eekes-repeater-max="{{ max }}"{% endif %}{% if prototype is defined %} data-prototype="{{ form_widget(prototype, {row_label: row_label})|e }}"{% endif %}>
+        <div class="eekes-form-repeater-rows">
+            {%- for child in form -%}
+                {{- form_widget(child, {row_label: row_label, row_number: loop.index}) -}}
+            {%- endfor -%}
+        </div>
+        <button type="button" class="btn btn-outline-secondary btn-sm eekes-form-repeater-add" data-eekes-repeater-add hidden>
+            {{- add_label ?? 'eekes_form_builder.repeater.add'|trans({}, 'eekes_form_builder') -}}
+        </button>
+    </div>
+{%- endblock -%}
+
+{%- block eekes_form_builder_repeater_row_widget -%}
+    <fieldset class="eekes-form-repeater-row border rounded p-3 mb-3" data-eekes-repeater-row>
+        <div class="d-flex justify-content-between align-items-center mb-2">
+            <legend class="eekes-form-repeater-row-title h6 mb-0 w-auto float-none">
+                {{- row_label|default('eekes_form_builder.repeater.row'|trans({}, 'eekes_form_builder')) }} <span data-eekes-repeater-number>{{ row_number|default('') }}</span>
+            </legend>
+            <button type="button" class="btn btn-link btn-sm text-danger p-0 eekes-form-repeater-remove" data-eekes-repeater-remove hidden>
+                {{- 'eekes_form_builder.repeater.remove'|trans({}, 'eekes_form_builder') -}}
+            </button>
+        </div>
+        {{- form_errors(form) -}}
+        <div class="row">
+            {%- for child in form -%}
+                {{- form_row(child) -}}
+            {%- endfor -%}
+        </div>
+    </fieldset>
+{%- endblock -%}
+
+{#
+    The honeypot of the spam protection: out of sight, out of the tab order and hidden from screen
+    readers, without taking a column of the grid. Not display: none, which some bots check for.
+#}
+{%- block eekes_form_builder_honeypot_row -%}
+    <div class="eekes-form-hp" aria-hidden="true" style="position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden;">
+        {{- form_label(form) -}}
+        {{- form_widget(form) -}}
+    </div>
+{%- endblock -%}
+
+{#
+    The previous/next/finish buttons of the flow. Only the ones that apply to the current step exist.
+    Enter in a field presses the first submit button of the form, so "next" and "finish" come first
+    in the HTML; flex-row-reverse still shows "previous" on the left.
+#}
+{%- block eekes_form_builder_navigator_row -%}
+    <div class="eekes-form-navigator d-flex flex-row-reverse gap-2 justify-content-between mt-2">
+        <div class="d-flex gap-2">
+            {%- if form.next is defined -%}{{- form_widget(form.next) -}}{%- endif -%}
+            {%- if form.finish is defined -%}{{- form_widget(form.finish) -}}{%- endif -%}
+        </div>
+        {%- if form.previous is defined -%}{{- form_widget(form.previous) -}}{%- else -%}<span></span>{%- endif -%}
+    </div>
+{%- endblock -%}

@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<form xmlns="http://schemas.sulu.io/template/template"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/form-1.0.xsd"
+>
+    <key>eekes_form_builder_field_text_block</key>
+
+    <properties>
+        <property name="content" type="text_editor" colspan="12">
+            <meta>
+                <title>eekes_form_builder.field.content</title>
+            </meta>
+        </property>
+        <section name="advanced">
+            <meta>
+                <title>eekes_form_builder.field.advanced</title>
+            </meta>
+            <properties>
+                <xi:include href="../forms-partials/field_key.xml"
+                            xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)xpointer(/sulu:properties/*)"/>
+            </properties>
+        </section>
+    </properties>
+</form>

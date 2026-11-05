@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<properties xmlns="http://schemas.sulu.io/template/template">
+        <property name="label" type="text_line" colspan="12">
+            <meta>
+                <title>eekes_form_builder.field.label</title>
+            </meta>
+        </property>
+</properties>

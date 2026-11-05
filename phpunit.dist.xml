@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="tests/bootstrap.php"
+         colors="true"
+         cacheDirectory=".phpunit.cache"
+         failOnWarning="true"
+         failOnRisky="true"
+>
+    <php>
+        <ini name="display_errors" value="1"/>
+        <ini name="error_reporting" value="-1"/>
+        <ini name="memory_limit" value="1G"/>
+        <server name="APP_ENV" value="test" force="true"/>
+        <server name="SHELL_VERBOSITY" value="-1"/>
+        <server name="KERNEL_CLASS" value="Eekes\Sulu\FormBuilderBundle\Tests\Application\Kernel"/>
+        <!-- Sulu's test kernel appends "_test" to the database name. -->
+        <env name="DATABASE_URL" value="mysql://root:ChangeMe@127.0.0.1:3306/sulu_form_builder?serverVersion=8.4"/>
+        <!--
+            Deprecations the bundle triggers itself fail the build; the ones Sulu and Symfony
+            trigger internally are reported but tolerated, since this bundle cannot fix them.
+        -->
+        <env name="SYMFONY_DEPRECATIONS_HELPER" value="max[self]=0&amp;ignoreFile=./tests/deprecations.ignore"/>
+    </php>
+
+    <extensions>
+        <bootstrap class="Symfony\Bridge\PhpUnit\SymfonyExtension"/>
+    </extensions>
+
+    <testsuites>
+        <testsuite name="Unit">
+            <directory>tests/Unit</directory>
+        </testsuite>
+        <testsuite name="Functional">
+            <directory>tests/Functional</directory>
+        </testsuite>
+    </testsuites>
+
+    <source>
+        <include>
+            <directory>src</directory>
+        </include>
+    </source>
+</phpunit>

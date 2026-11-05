@@ -1,0 +1,93 @@
+<?xml version="1.0" ?>
+<form xmlns="http://schemas.sulu.io/template/template"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/form-1.0.xsd"
+>
+    <key>eekes_form_builder_field_choice</key>
+
+    <properties>
+        <xi:include href="../forms-partials/field_label.xml"
+                    xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)xpointer(/sulu:properties/*)"/>
+        <property name="display" type="single_select" colspan="6">
+            <meta>
+                <title>eekes_form_builder.field.display</title>
+            </meta>
+            <params>
+                <param name="default_value" value="select"/>
+                <param name="values" type="collection">
+                    <param name="select">
+                        <meta>
+                            <title>eekes_form_builder.field.display_select</title>
+                        </meta>
+                    </param>
+                    <param name="radio">
+                        <meta>
+                            <title>eekes_form_builder.field.display_radio</title>
+                        </meta>
+                    </param>
+                    <param name="checkboxes">
+                        <meta>
+                            <title>eekes_form_builder.field.display_checkboxes</title>
+                        </meta>
+                    </param>
+                </param>
+            </params>
+        </property>
+        <property name="multiple" type="checkbox" colspan="6" visibleCondition="display == 'select'">
+            <meta>
+                <title>eekes_form_builder.field.multiple</title>
+            </meta>
+            <params>
+                <param name="type" value="toggler"/>
+                <param name="label" value="eekes_form_builder.field.multiple_label"/>
+            </params>
+        </property>
+        <block name="choices" default-type="choice" minOccurs="1">
+            <meta>
+                <title>eekes_form_builder.field.choices</title>
+                <info_text>eekes_form_builder.field.choices_info</info_text>
+            </meta>
+            <types>
+                <type name="choice">
+                    <meta>
+                        <title>eekes_form_builder.field.choice</title>
+                    </meta>
+                    <properties>
+                            <property name="label" type="text_line" mandatory="true" colspan="6">
+                                <meta>
+                                    <title>eekes_form_builder.field.choice_label</title>
+                                </meta>
+                            </property>
+                            <property name="value" type="text_line" colspan="6">
+                                <meta>
+                                    <title>eekes_form_builder.field.choice_value</title>
+                                    <info_text>eekes_form_builder.field.choice_value_info</info_text>
+                                </meta>
+                            </property>
+                    </properties>
+                </type>
+            </types>
+        </block>
+        <property name="placeholder" type="text_line" colspan="6" visibleCondition="display == 'select' &amp;&amp; !multiple">
+            <meta>
+                <title>eekes_form_builder.field.placeholder</title>
+            </meta>
+        </property>
+        <xi:include href="../forms-partials/field_help.xml"
+                    xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)xpointer(/sulu:properties/*)"/>
+        <xi:include href="../forms-partials/field_required.xml"
+                    xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)xpointer(/sulu:properties/*)"/>
+        <xi:include href="../forms-partials/field_show_in_list.xml"
+                    xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)xpointer(/sulu:properties/*)"/>
+        <section name="advanced">
+            <meta>
+                <title>eekes_form_builder.field.advanced</title>
+            </meta>
+            <properties>
+                <xi:include href="../forms-partials/field_key.xml"
+                            xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)xpointer(/sulu:properties/*)"/>
+            </properties>
+        </section>
+    </properties>
+</form>

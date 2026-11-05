@@ -1,0 +1,145 @@
+<?xml version="1.0" ?>
+<form xmlns="http://schemas.sulu.io/template/template"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/form-1.0.xsd"
+>
+    <key>eekes_form_builder_field_repeater</key>
+
+    <properties>
+        <xi:include href="../forms-partials/field_label.xml"
+                    xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)xpointer(/sulu:properties/*)"/>
+        <xi:include href="../forms-partials/field_help.xml"
+                    xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)xpointer(/sulu:properties/*)"/>
+        <block name="fields" default-type="text" minOccurs="1">
+            <meta>
+                <title>eekes_form_builder.field.sub_fields</title>
+                <info_text>eekes_form_builder.field.sub_fields_info</info_text>
+            </meta>
+            <types>
+                <type name="text">
+                    <meta>
+                        <title>eekes_form_builder.field_type.text</title>
+                    </meta>
+                    <properties>
+                        <xi:include href="../forms-partials/repeater_sub_field.xml"
+                                    xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)xpointer(/sulu:properties/*)"/>
+                    </properties>
+                </type>
+                <type name="email">
+                    <meta>
+                        <title>eekes_form_builder.field_type.email</title>
+                    </meta>
+                    <properties>
+                        <xi:include href="../forms-partials/repeater_sub_field.xml"
+                                    xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)xpointer(/sulu:properties/*)"/>
+                    </properties>
+                </type>
+                <type name="phone">
+                    <meta>
+                        <title>eekes_form_builder.field_type.phone</title>
+                    </meta>
+                    <properties>
+                        <xi:include href="../forms-partials/repeater_sub_field.xml"
+                                    xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)xpointer(/sulu:properties/*)"/>
+                    </properties>
+                </type>
+                <type name="number">
+                    <meta>
+                        <title>eekes_form_builder.field_type.number</title>
+                    </meta>
+                    <properties>
+                        <xi:include href="../forms-partials/repeater_sub_field.xml"
+                                    xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)xpointer(/sulu:properties/*)"/>
+                    </properties>
+                </type>
+                <type name="url">
+                    <meta>
+                        <title>eekes_form_builder.field_type.url</title>
+                    </meta>
+                    <properties>
+                        <xi:include href="../forms-partials/repeater_sub_field.xml"
+                                    xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)xpointer(/sulu:properties/*)"/>
+                    </properties>
+                </type>
+                <type name="date">
+                    <meta>
+                        <title>eekes_form_builder.field_type.date</title>
+                    </meta>
+                    <properties>
+                        <xi:include href="../forms-partials/repeater_sub_field.xml"
+                                    xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)xpointer(/sulu:properties/*)"/>
+                    </properties>
+                </type>
+                <type name="time">
+                    <meta>
+                        <title>eekes_form_builder.field_type.time</title>
+                    </meta>
+                    <properties>
+                        <xi:include href="../forms-partials/repeater_sub_field.xml"
+                                    xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)xpointer(/sulu:properties/*)"/>
+                    </properties>
+                </type>
+                <type name="textarea">
+                    <meta>
+                        <title>eekes_form_builder.field_type.textarea</title>
+                    </meta>
+                    <properties>
+                        <xi:include href="../forms-partials/repeater_sub_field.xml"
+                                    xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)xpointer(/sulu:properties/*)"/>
+                    </properties>
+                </type>
+            </types>
+        </block>
+        <property name="rowLabel" type="text_line" colspan="6">
+            <meta>
+                <title>eekes_form_builder.field.repeater_row_label</title>
+                <info_text>eekes_form_builder.field.repeater_row_label_info</info_text>
+            </meta>
+        </property>
+        <property name="addLabel" type="text_line" colspan="6">
+            <meta>
+                <title>eekes_form_builder.field.repeater_add_label</title>
+                <info_text>eekes_form_builder.field.repeater_add_label_info</info_text>
+            </meta>
+        </property>
+        <xi:include href="../forms-partials/field_required.xml"
+                    xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)xpointer(/sulu:properties/*)"/>
+        <xi:include href="../forms-partials/field_show_in_list.xml"
+                    xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)xpointer(/sulu:properties/*)"/>
+        <section name="validation">
+            <meta>
+                <title>eekes_form_builder.field.validation</title>
+            </meta>
+            <properties>
+                <property name="min" type="number" colspan="6">
+                    <meta>
+                        <title>eekes_form_builder.field.repeater_min</title>
+                        <info_text>eekes_form_builder.field.repeater_min_info</info_text>
+                    </meta>
+                    <params>
+                        <param name="min" value="0"/>
+                    </params>
+                </property>
+                <property name="max" type="number" colspan="6">
+                    <meta>
+                        <title>eekes_form_builder.field.repeater_max</title>
+                        <info_text>eekes_form_builder.field.repeater_max_info</info_text>
+                    </meta>
+                    <params>
+                        <param name="min" value="1"/>
+                    </params>
+                </property>
+            </properties>
+        </section>
+        <section name="advanced">
+            <meta>
+                <title>eekes_form_builder.field.advanced</title>
+            </meta>
+            <properties>
+                <xi:include href="../forms-partials/field_key.xml"
+                            xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)xpointer(/sulu:properties/*)"/>
+            </properties>
+        </section>
+    </properties>
+</form>

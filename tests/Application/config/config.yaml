@@ -1,0 +1,64 @@
+framework:
+    mailer:
+        dsn: 'null://null'
+    session:
+        storage_factory_id: session.storage.factory.mock_file
+
+twig:
+    default_path: '%kernel.project_dir%/templates'
+    strict_variables: true
+
+eekes_sulu_form_builder:
+    sender:
+        email: 'website@example.com'
+        name: 'Example website'
+    upload_directory: '%kernel.project_dir%/var/uploads/form_builder'
+    notifications:
+        branding:
+            name: 'Example Ltd'
+            accent_color: '#ff6600'
+            footer: 'Main Street 1, Ghent'
+        templates:
+            letter: { label: 'Letter', template: 'email/letter.html.twig' }
+    integrations:
+        enabled: ['webhook', 'fake_crm', 'not_installed']
+        webhook:
+            http_client: 'eekes_test.http_client'
+            endpoints:
+                zapier: 'https://hooks.example.com/zapier'
+                crm:
+                    url: 'https://crm.example.com/hook'
+                    secret: 's3cret'
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    # A field type of the application, registered exactly the way a consuming project would.
+    Eekes\Sulu\FormBuilderBundle\Tests\Application\FieldType\:
+        resource: '../FieldType/'
+
+    # An integration of the application, and the HTTP client the webhook talks to.
+    Eekes\Sulu\FormBuilderBundle\Tests\Application\Integration\:
+        resource: '../Integration/'
+        public: true
+
+    # A spam check of the application.
+    Eekes\Sulu\FormBuilderBundle\Tests\Application\Spam\:
+        resource: '../Spam/'
+        public: true
+
+    eekes_test.http_client:
+        class: Eekes\Sulu\FormBuilderBundle\Tests\Double\RecordingHttpClient
+        public: true
+
+    Eekes\Sulu\FormBuilderBundle\Tests\Double\RecordingHttpClient:
+        alias: eekes_test.http_client
+        public: true
+
+    # Records every event of the bundle, so tests can assert on what listeners would receive.
+    Eekes\Sulu\FormBuilderBundle\Tests\Application\EventListener\:
+        resource: '../EventListener/'
+        public: true

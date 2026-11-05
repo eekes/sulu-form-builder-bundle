@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<!--
+    Only the columns: the rows come from NotificationController, which lists the notifications of
+    one form without Sulu's Doctrine list builder.
+-->
+<list xmlns="http://schemas.sulu.io/list-builder/list">
+    <key>eekes_form_notifications</key>
+
+    <properties>
+        <property name="id" visibility="no" translation="sulu_admin.id">
+            <field-name>id</field-name>
+            <entity-name>Eekes\Sulu\FormBuilderBundle\Domain\Entity\Notification</entity-name>
+        </property>
+
+        <property name="name" visibility="always" translation="eekes_form_builder.notification_name">
+            <field-name>name</field-name>
+            <entity-name>Eekes\Sulu\FormBuilderBundle\Domain\Entity\Notification</entity-name>
+        </property>
+
+        <property name="to" visibility="always" translation="eekes_form_builder.to">
+            <field-name>to</field-name>
+            <entity-name>Eekes\Sulu\FormBuilderBundle\Domain\Entity\Notification</entity-name>
+        </property>
+
+        <property name="enabled" visibility="always" type="bool" translation="eekes_form_builder.enabled">
+            <field-name>enabled</field-name>
+            <entity-name>Eekes\Sulu\FormBuilderBundle\Domain\Entity\Notification</entity-name>
+            <transformer type="bool"/>
+        </property>
+    </properties>
+</list>

@@ -1,0 +1,53 @@
+<?xml version="1.0" ?>
+<properties xmlns="http://schemas.sulu.io/template/template">
+        <property name="label" type="text_line" mandatory="true" colspan="6">
+            <meta>
+                <title>eekes_form_builder.field.label</title>
+            </meta>
+        </property>
+        <property name="key" type="text_line" mandatory="true" colspan="6">
+            <meta>
+                <title>eekes_form_builder.field.sub_field_key</title>
+                <info_text>eekes_form_builder.field.sub_field_key_info</info_text>
+            </meta>
+        </property>
+        <property name="width" type="single_select" colspan="6">
+            <meta>
+                <title>eekes_form_builder.field.sub_field_width</title>
+            </meta>
+            <params>
+                <param name="default_value" value="12"/>
+                <param name="values" type="collection">
+                    <param name="12">
+                        <meta>
+                            <title>eekes_form_builder.field.sub_field_width_full</title>
+                        </meta>
+                    </param>
+                    <param name="6">
+                        <meta>
+                            <title>eekes_form_builder.field.sub_field_width_half</title>
+                        </meta>
+                    </param>
+                    <param name="4">
+                        <meta>
+                            <title>eekes_form_builder.field.sub_field_width_third</title>
+                        </meta>
+                    </param>
+                    <param name="3">
+                        <meta>
+                            <title>eekes_form_builder.field.sub_field_width_quarter</title>
+                        </meta>
+                    </param>
+                </param>
+            </params>
+        </property>
+        <property name="required" type="checkbox" colspan="6">
+            <meta>
+                <title>eekes_form_builder.field.required</title>
+            </meta>
+            <params>
+                <param name="type" value="toggler"/>
+                <param name="label" value="eekes_form_builder.field.required_label"/>
+            </params>
+        </property>
+</properties>

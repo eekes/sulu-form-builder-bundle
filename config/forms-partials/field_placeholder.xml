@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<properties xmlns="http://schemas.sulu.io/template/template">
+        <property name="placeholder" type="text_line" colspan="6">
+            <meta>
+                <title>eekes_form_builder.field.placeholder</title>
+            </meta>
+        </property>
+</properties>

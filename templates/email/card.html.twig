@@ -1,0 +1,39 @@
+{#
+    "Card", the default: the text on a white card with the brand above it and the answers below it.
+    Fits a confirmation to the visitor and a notification to the team alike.
+#}
+{% extends '@EekesSuluFormBuilder/email/base.html.twig' %}
+
+{% block content %}
+    <tr>
+        <td style="height: 4px; line-height: 4px; font-size: 4px; background: {{ accent }}; border-radius: 10px 10px 0 0;">&nbsp;</td>
+    </tr>
+    <tr>
+        <td class="eekes-card" style="background: #ffffff; border: 1px solid #e5e7eb; border-top: 0; border-radius: 0 0 10px 10px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+                <tr>
+                    <td class="eekes-padding eekes-rule" style="padding: 22px 40px; border-bottom: 1px solid #f0f1f3;">
+                        {%- if branding.logo_url is not empty -%}
+                            <img src="{{ branding.logo_url }}" alt="{{ brand }}" height="32" style="display: block; height: 32px; width: auto; border: 0;">
+                        {%- else -%}
+                            <span class="eekes-title" style="font-size: 15px; font-weight: 700; letter-spacing: -0.01em; color: #111827;">{{ brand }}</span>
+                        {%- endif -%}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="eekes-padding" style="padding: 32px 40px 36px;">
+                        {%- if body is not empty %}
+                            <div class="eekes-text" style="font-size: 16px; line-height: 1.65; color: #1f2937;">{{ body|raw }}</div>
+                        {%- endif %}
+                        {%- if include_values and values is not empty %}
+                            <div class="eekes-muted" style="padding: {{ body is not empty ? '18px' : '0' }} 0 10px; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: {{ accent }};">
+                                {{ 'eekes_form_builder.email.answers'|trans({}, 'eekes_form_builder') }}
+                            </div>
+                            {% include '@EekesSuluFormBuilder/email/_answers.html.twig' %}
+                        {%- endif %}
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+{% endblock %}

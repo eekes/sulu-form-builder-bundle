@@ -1,0 +1,113 @@
+/* Colors copied from the palette of sulu-admin-bundle, which cannot be imported from outside of that package. */
+$border: #e5e5e5;
+$textMuted: #6e6e6e;
+$warning: #cf3939;
+$warningBackground: #fdf2f2;
+
+.flow {
+    section {
+        margin-bottom: 25px;
+    }
+
+    h3 {
+        margin: 0 0 8px;
+        font-size: 14px;
+    }
+}
+
+.help {
+    display: block;
+    margin: 4px 0 0;
+    color: $textMuted;
+    font-size: 11px;
+    font-weight: normal;
+}
+
+.error {
+    margin: 6px 0 0;
+    color: $warning;
+    font-size: 12px;
+}
+
+.problems {
+    margin-bottom: 20px;
+    padding: 10px 14px;
+    border-left: 3px solid $warning;
+    background: $warningBackground;
+    font-size: 12px;
+
+    ul {
+        margin: 6px 0 0;
+        padding-left: 18px;
+    }
+}
+
+.settings {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px 20px;
+}
+
+.setting label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 12px;
+}
+
+.mapping {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+
+    th,
+    td {
+        padding: 8px 0;
+        border-bottom: 1px solid $border;
+        vertical-align: top;
+        text-align: left;
+    }
+
+    th {
+        width: 35%;
+        padding-right: 20px;
+        font-weight: bold;
+    }
+
+    td > * + * {
+        margin-top: 6px;
+    }
+}
+
+.missing th {
+    color: $warning;
+}
+
+.required {
+    color: $warning;
+}
+
+.target-key {
+    display: block;
+    color: $textMuted;
+    font-family: monospace;
+    font-weight: normal;
+}
+
+.remove-cell {
+    width: 30px;
+    text-align: right;
+
+    button {
+        padding: 4px;
+        border: 0;
+        background: none;
+        color: $textMuted;
+        cursor: pointer;
+    }
+}
+
+.add-target {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+}

@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<properties xmlns="http://schemas.sulu.io/template/template">
+        <property name="help" type="text_line" colspan="6">
+            <meta>
+                <title>eekes_form_builder.field.help</title>
+                <info_text>eekes_form_builder.field.help_info</info_text>
+            </meta>
+        </property>
+</properties>

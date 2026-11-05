@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<form xmlns="http://schemas.sulu.io/template/template"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/form-1.0.xsd"
+>
+    <key>eekes_form_builder_field_time</key>
+
+    <properties>
+        <xi:include href="../forms-partials/field_label.xml"
+                    xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)xpointer(/sulu:properties/*)"/>
+        <xi:include href="../forms-partials/field_help.xml"
+                    xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)xpointer(/sulu:properties/*)"/>
+        <xi:include href="../forms-partials/field_required.xml"
+                    xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)xpointer(/sulu:properties/*)"/>
+        <xi:include href="../forms-partials/field_show_in_list.xml"
+                    xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)xpointer(/sulu:properties/*)"/>
+        <section name="advanced">
+            <meta>
+                <title>eekes_form_builder.field.advanced</title>
+            </meta>
+            <properties>
+                <xi:include href="../forms-partials/field_key.xml"
+                            xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)xpointer(/sulu:properties/*)"/>
+            </properties>
+        </section>
+    </properties>
+</form>

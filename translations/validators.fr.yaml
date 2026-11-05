@@ -1,0 +1,2 @@
+eekes_form_builder.repeater.too_few: 'Remplissez au moins une entrée.|Remplissez au moins {{ limit }} entrées.'
+eekes_form_builder.repeater.too_many: 'Remplissez au plus une entrée.|Remplissez au plus {{ limit }} entrées.'

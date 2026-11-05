@@ -1,0 +1,118 @@
+<?xml version="1.0" ?>
+<form xmlns="http://schemas.sulu.io/template/template"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/form-1.0.xsd"
+>
+    <key>eekes_form_notification_details</key>
+
+    <properties>
+        <property name="name" type="text_line" mandatory="true" colspan="8">
+            <meta>
+                <title>eekes_form_builder.notification_name</title>
+                <info_text>eekes_form_builder.notification_name_info</info_text>
+            </meta>
+        </property>
+        <property name="enabled" type="checkbox" colspan="4">
+            <meta>
+                <title>eekes_form_builder.enabled</title>
+            </meta>
+            <params>
+                <param name="type" value="toggler"/>
+                <param name="default_value" value="true"/>
+                <param name="label" value="eekes_form_builder.enabled_label"/>
+            </params>
+        </property>
+
+        <section name="recipients">
+            <meta>
+                <title>eekes_form_builder.recipients</title>
+                <info_text>eekes_form_builder.recipients_info</info_text>
+            </meta>
+            <properties>
+                <property name="to" type="text_line" mandatory="true" colspan="12">
+                    <meta>
+                        <title>eekes_form_builder.to</title>
+                    </meta>
+                </property>
+                <property name="cc" type="text_line" colspan="6">
+                    <meta>
+                        <title>eekes_form_builder.cc</title>
+                    </meta>
+                </property>
+                <property name="bcc" type="text_line" colspan="6">
+                    <meta>
+                        <title>eekes_form_builder.bcc</title>
+                    </meta>
+                </property>
+                <property name="replyTo" type="text_line" colspan="12">
+                    <meta>
+                        <title>eekes_form_builder.reply_to</title>
+                    </meta>
+                </property>
+                <property name="fromEmail" type="email" colspan="6">
+                    <meta>
+                        <title>eekes_form_builder.from_email</title>
+                        <info_text>eekes_form_builder.from_email_info</info_text>
+                    </meta>
+                </property>
+                <property name="fromName" type="text_line" colspan="6">
+                    <meta>
+                        <title>eekes_form_builder.from_name</title>
+                    </meta>
+                </property>
+            </properties>
+        </section>
+
+        <section name="message">
+            <meta>
+                <title>eekes_form_builder.message</title>
+                <info_text>eekes_form_builder.message_info</info_text>
+            </meta>
+            <properties>
+                <property name="subject" type="text_line" mandatory="true" colspan="12">
+                    <meta>
+                        <title>eekes_form_builder.subject</title>
+                    </meta>
+                </property>
+                <property name="body" type="text_editor" colspan="12">
+                    <meta>
+                        <title>eekes_form_builder.body</title>
+                    </meta>
+                </property>
+                <property name="includeValues" type="checkbox" colspan="6">
+                    <meta>
+                        <title>eekes_form_builder.include_values</title>
+                    </meta>
+                    <params>
+                        <param name="type" value="toggler"/>
+                        <param name="default_value" value="true"/>
+                        <param name="label" value="eekes_form_builder.include_values_label"/>
+                    </params>
+                </property>
+                <property name="attachUploads" type="checkbox" colspan="6">
+                    <meta>
+                        <title>eekes_form_builder.attach_uploads</title>
+                    </meta>
+                    <params>
+                        <param name="type" value="toggler"/>
+                        <param name="label" value="eekes_form_builder.attach_uploads_label"/>
+                    </params>
+                </property>
+            </properties>
+        </section>
+
+        <section name="conditions_section">
+            <meta>
+                <title>eekes_form_builder.conditions</title>
+                <info_text>eekes_form_builder.conditions_info</info_text>
+            </meta>
+            <properties>
+                <property name="conditions" type="eekes_form_builder_conditions" colspan="12">
+                    <meta>
+                        <title>eekes_form_builder.conditions</title>
+                    </meta>
+                </property>
+            </properties>
+        </section>
+    </properties>
+</form>

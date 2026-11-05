@@ -1,0 +1,55 @@
+<?xml version="1.0" ?>
+<form xmlns="http://schemas.sulu.io/template/template"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/form-1.0.xsd"
+>
+    <key>eekes_form_builder_field_heading</key>
+
+    <properties>
+        <property name="label" type="text_line" colspan="12">
+            <meta>
+                <title>eekes_form_builder.field.heading_text</title>
+            </meta>
+        </property>
+        <property name="level" type="single_select" colspan="6">
+            <meta>
+                <title>eekes_form_builder.field.heading_level</title>
+            </meta>
+            <params>
+                <param name="default_value" value="h3"/>
+                <param name="values" type="collection">
+                    <param name="h2">
+                        <meta>
+                            <title>H2</title>
+                        </meta>
+                    </param>
+                    <param name="h3">
+                        <meta>
+                            <title>H3</title>
+                        </meta>
+                    </param>
+                    <param name="h4">
+                        <meta>
+                            <title>H4</title>
+                        </meta>
+                    </param>
+                    <param name="h5">
+                        <meta>
+                            <title>H5</title>
+                        </meta>
+                    </param>
+                </param>
+            </params>
+        </property>
+        <section name="advanced">
+            <meta>
+                <title>eekes_form_builder.field.advanced</title>
+            </meta>
+            <properties>
+                <xi:include href="../forms-partials/field_key.xml"
+                            xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)xpointer(/sulu:properties/*)"/>
+            </properties>
+        </section>
+    </properties>
+</form>

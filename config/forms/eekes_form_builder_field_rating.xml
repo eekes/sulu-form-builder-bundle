@@ -1,0 +1,90 @@
+<?xml version="1.0" ?>
+<form xmlns="http://schemas.sulu.io/template/template"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/form-1.0.xsd"
+>
+    <key>eekes_form_builder_field_rating</key>
+
+    <properties>
+        <xi:include href="../forms-partials/field_label.xml"
+                    xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)xpointer(/sulu:properties/*)"/>
+        <property name="display" type="single_select" colspan="6">
+            <meta>
+                <title>eekes_form_builder.field.display</title>
+            </meta>
+            <params>
+                <param name="default_value" value="stars"/>
+                <param name="values" type="collection">
+                    <param name="stars">
+                        <meta>
+                            <title>eekes_form_builder.field.rating_display_stars</title>
+                        </meta>
+                    </param>
+                    <param name="scale">
+                        <meta>
+                            <title>eekes_form_builder.field.rating_display_scale</title>
+                        </meta>
+                    </param>
+                </param>
+            </params>
+        </property>
+        <property name="min" type="single_select" colspan="3" visibleCondition="display == 'scale'">
+            <meta>
+                <title>eekes_form_builder.field.rating_from</title>
+            </meta>
+            <params>
+                <param name="default_value" value="1"/>
+                <param name="values" type="collection">
+                    <param name="0">
+                        <meta>
+                            <title>0</title>
+                        </meta>
+                    </param>
+                    <param name="1">
+                        <meta>
+                            <title>1</title>
+                        </meta>
+                    </param>
+                </param>
+            </params>
+        </property>
+        <property name="max" type="number" colspan="3">
+            <meta>
+                <title>eekes_form_builder.field.rating_to</title>
+                <info_text>eekes_form_builder.field.rating_to_info</info_text>
+            </meta>
+            <params>
+                <param name="min" value="2"/>
+                <param name="max" value="10"/>
+            </params>
+        </property>
+        <property name="lowLabel" type="text_line" colspan="6">
+            <meta>
+                <title>eekes_form_builder.field.rating_low_label</title>
+                <info_text>eekes_form_builder.field.rating_low_label_info</info_text>
+            </meta>
+        </property>
+        <property name="highLabel" type="text_line" colspan="6">
+            <meta>
+                <title>eekes_form_builder.field.rating_high_label</title>
+                <info_text>eekes_form_builder.field.rating_high_label_info</info_text>
+            </meta>
+        </property>
+        <xi:include href="../forms-partials/field_help.xml"
+                    xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)xpointer(/sulu:properties/*)"/>
+        <xi:include href="../forms-partials/field_required.xml"
+                    xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)xpointer(/sulu:properties/*)"/>
+        <xi:include href="../forms-partials/field_show_in_list.xml"
+                    xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)xpointer(/sulu:properties/*)"/>
+        <section name="advanced">
+            <meta>
+                <title>eekes_form_builder.field.advanced</title>
+            </meta>
+            <properties>
+                <xi:include href="../forms-partials/field_key.xml"
+                            xpointer="xmlns(sulu=http://schemas.sulu.io/template/template)xpointer(/sulu:properties/*)"/>
+            </properties>
+        </section>
+    </properties>
+</form>

@@ -1,0 +1,2 @@
+eekes_form_builder.repeater.too_few: 'Fill in at least one entry.|Fill in at least {{ limit }} entries.'
+eekes_form_builder.repeater.too_many: 'Fill in at most one entry.|Fill in at most {{ limit }} entries.'

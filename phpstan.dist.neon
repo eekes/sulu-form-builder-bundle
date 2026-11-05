@@ -1,0 +1,8 @@
+parameters:
+    paths:
+        - src/
+        - tests/
+    level: max
+    excludePaths:
+        analyseAndScan:
+            - tests/Application/var/*
